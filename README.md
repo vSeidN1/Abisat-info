@@ -33,14 +33,14 @@
 
 - **Seid Nur**
 
-- Telegram : t.me/S_ei_d1
+- Telegram : t.me/vSeidN
 
 - Tel : +251977711666 | +251927213165
 
 - Email : seidnur047@gmail.com
 
-- Linkedin : linkedin.com/in/seid-nur-670029334
+- Linkedin : linkedin.com/in/vseidn
 
-- Github : github.com/Seid-1
+- Github : github.com/vSeidn1
 
 
