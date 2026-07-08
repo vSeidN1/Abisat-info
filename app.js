@@ -47,7 +47,7 @@ app.engine(
         return a === b;
       },
     },
-  })
+  }),
 );
 
 app.set("view engine", "handlebars");
@@ -74,8 +74,8 @@ app.post("/send-message", async (req, res, next) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "abisatinfo@gmail.com",
-      pass: "xblbovpppvuutwmh",
+      user: process.env.EMAIL_USER.trim(),
+      pass: process.env.EMAIL_PASS.trim(),
     },
   });
   const mailOptions = {
@@ -146,7 +146,7 @@ app.post("/admin/upload", async (req, res) => {
 
     await db.execute(
       `INSERT INTO ${table} (brand, model, filename, file_type, download_url, description) VALUES (?, ?, ?, ?, ?, ?)`,
-      [brand, model, file.name, file_type, downloadUrl, description]
+      [brand, model, file.name, file_type, downloadUrl, description],
     );
 
     res.render("admin/upload", {
@@ -191,7 +191,7 @@ app.get("/download/software", async (req, res, next) => {
   try {
     const [rows] = await db.query(
       "SELECT * FROM files WHERE download_url = ?",
-      [download_url]
+      [download_url],
     );
 
     if (rows.length === 0) {
@@ -244,7 +244,7 @@ app.get("/download/loader", async (req, res, next) => {
   try {
     const [rows] = await db.query(
       "SELECT * FROM filesl WHERE download_url = ?",
-      [download_url]
+      [download_url],
     );
 
     if (rows.length === 0) {
@@ -282,7 +282,7 @@ app.get("/channel-sat/:name", async (req, res) => {
   try {
     const [channels] = await db.query(
       "SELECT * FROM channels WHERE LOWER(satellite) = ?",
-      [satName]
+      [satName],
     );
 
     res.render("satellite", {
@@ -311,7 +311,7 @@ app.use("/services", async (req, res, next) => {
 app.get("/admin/posts", async (req, res) => {
   try {
     const [posts] = await db.query(
-      "SELECT id, title FROM posts ORDER BY created_at DESC LIMIT 5"
+      "SELECT id, title FROM posts ORDER BY created_at DESC LIMIT 5",
     );
     res.render("admin/admin-posts", {
       title7: "Admin Post Panel",
@@ -339,7 +339,7 @@ app.post("/admin/posts", async (req, res) => {
 
     await db.query(
       "INSERT INTO posts (title, content, image) VALUES (?, ?, ?)",
-      [title, content, imageName]
+      [title, content, imageName],
     );
 
     res.redirect("/admin/posts");
@@ -359,7 +359,7 @@ app.get("/posts", async (req, res) => {
 
     const [posts] = await db.query(
       "SELECT * FROM posts ORDER BY created_at DESC LIMIT ? OFFSET ?",
-      [postsPerPage, offset]
+      [postsPerPage, offset],
     );
 
     res.render("public-posts", {
@@ -412,7 +412,7 @@ app.post("/admin/posts/edit/:id", async (req, res) => {
 
     await db.query(
       "UPDATE posts SET title = ?, content = ?, image = ? WHERE id = ?",
-      [title, content, imageName, postId]
+      [title, content, imageName, postId],
     );
 
     res.redirect("/admin/posts");
