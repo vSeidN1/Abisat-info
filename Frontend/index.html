@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1b2a" />
+    <meta name="description" content="Satellite channels, receiver software, loaders and updates from Abisat ET." />
+    <link rel="icon" href="/images/abisat-logo.jpg" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Abisat ET | Satellite information and downloads</title>
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('abisat-theme') === 'light' ? 'light' : 'dark'
+      } catch {
+        document.documentElement.dataset.theme = 'dark'
+      }
+      document.querySelector('meta[name="theme-color"]').setAttribute(
+        'content',
+        document.documentElement.dataset.theme === 'dark' ? '#0d1b2a' : '#f4f7fb',
+      )
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

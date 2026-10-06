@@ -1,46 +1,50 @@
-🏆 ABISAT ET
+# ABISAT ET
 
- ABISAT ET is a platform that provides satellite dish software, loaders, and information about satellite channels, receivers, and services. This project includes functionalities such as:
+ABISAT ET is a modern satellite information and download website for software, loaders, news, and channel updates.
 
-- Uploading and downloading satellite software and loader files.
-- Viewing and managing satellite channels and services.
-- Admin panel for managing posts, uploading files, and controlling the content.
+## Stack
 
----
+- Frontend: Vue 3 + Vite + Tailwind CSS
+- Backend: Express + MySQL
+- Database: MySQL with automatic schema initialization on startup
+- Interface: persistent dark and light themes
 
-🔧 Features
+## Project structure
 
-- Admin Panel: Admins can upload files, create posts, manage content, and logout securely.
-- Software & Loader Downloads: Users can browse and download software and loader files for different satellite receivers.
-- Posts: in this section users can get the latest post about satellite news, channel update and may be the free channel schedule.
-- Channel & Sat List: View available satellite channels and information about satellites.
-- Contact Form: Reach out to us via the contact form for inquiries or support.
+- Frontend/: Vue frontend app and assets
+- Backend/: Express API, upload handling, MySQL bootstrap, environment configuration
+- Frontend/public/: static images and CSS files
 
----
+## Setup
 
-🚀 Technologies Used
+1. Install dependencies
+   - npm install
+2. Configure MySQL
+   - Make sure MySQL/MariaDB is running locally
+   - Update Backend/.env with your DB credentials and admin credentials
+   - Configure EMAIL_USER and EMAIL_PASS with a Gmail address and its Google App Password
+   - Set CONTACT_TO to the mailbox that should receive contact form messages (defaults to abisatinfo.support@gmail.com)
+3. Run the app
+   - npm run dev:frontend
+   - npm run dev:backend
 
-- Node.js + Express
-- Handlebars (template engine)
-- MySQL (with async/await)
-- Bootstrap 5 (responsive layout)
-- Animate.css (for subtle effects)
-- Font Awsome (for d/t font styles)
+The backend automatically creates the database and tables defined in Backend/database/schema.sql when it starts if the database server is reachable.
 
----
+## Default env values
 
-🧑‍💻 Author
+- DB_NAME=abisat_et
+- ADMIN_USERNAME=admin
+- ADMIN_PASSWORD=change-this-before-deploying
+- CONTACT_TO=abisatinfo.support@gmail.com
 
-- **Seid Nur**
+The contact form reports when Gmail's SMTP server accepts a message; this does not guarantee inbox placement. Check the configured CONTACT_TO mailbox's spam/promotions folders. EMAIL_PASS should be a Google App Password, not the normal Gmail account password.
 
-- Telegram : t.me/vSeidN
+## Useful commands
 
-- Tel : +251977711666 | +251927213165
+- npm run build: build the Vue app for production
+- npm run start --workspace Backend: run the backend server
 
-- Email : seidnur047@gmail.com
+## Notes
 
-- Linkedin : linkedin.com/in/vseidn
-
-- Github : github.com/vSeidn1
-
-
+- Uploaded files are stored in Backend/uploads/
+- Frontend static assets remain under Frontend/public/
